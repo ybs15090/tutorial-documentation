@@ -13,22 +13,6 @@ scp [选项] [源文件] [目标路径]
 ---
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # 更新
 ```shell
 sudo apt update && sudo apt upgrade
