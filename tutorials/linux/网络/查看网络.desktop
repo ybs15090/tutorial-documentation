@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=网络设置
+Comment=以管理员权限运行我的脚本
+
+# 指定脚本所在的工作目录 (注意不要包含文件名)
+Path=/home/s/robot_projects/scripts
+
+#Exec=pkexec /home/s/robot_projects/scripts/net_ssh_set.sh
+Exec=bash -c 'pkexec /home/s/robot_projects/scripts/net_ssh_set.sh; read'
+
+Icon=/home/s/App/AppData/Icon/network/wifi.svg
+Terminal=true
