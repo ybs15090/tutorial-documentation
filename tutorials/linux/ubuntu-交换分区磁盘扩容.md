@@ -41,6 +41,10 @@ swapon --show
 
 ### 第二阶段：GParted 分区调整
 
+> **Live 环境没有 GParted？**  
+> - 有网络：`sudo apt-get install -y gparted` 安装后再启动。  
+> - 无网络：跳到下方[命令行备用方案](#备用方案命令行操作无-gparted)。
+
 1. 打开应用菜单，搜索并启动 **GParted**。
 2. 右上角磁盘下拉菜单选择 `/dev/nvme0n1`（约 953.87 GiB）。
 3. 右键点击 `/dev/nvme0n1p2`（linux-swap，约 7.63 GiB）→ 选择 **Delete**。  
@@ -51,6 +55,54 @@ swapon --show
 7. 点击顶部工具栏的绿色对号图标（**Apply All Operations**）执行所有更改。
 
 > 由于未分配空间位于根分区**左侧**，GParted 需要将数十 GiB 的数据在底层物理扇区上整体向左平移，耗时可能达数十分钟，请耐心等待进度条完成，**切勿中断**。
+
+#### 备用方案：命令行操作（无 GParted）
+
+使用 Ubuntu Live 自带的 `gdisk` 和 `resize2fs` 完成等效操作。
+
+**① 记录关键扇区号**
+
+```bash
+sudo gdisk -l /dev/nvme0n1
+```
+
+在输出的分区列表中找到并**记下两个数字**：
+
+- `nvme0n1p2` 行的 **Start** 扇区（swap 分区起点，如 `1054720`）
+- `nvme0n1p3` 行的 **End** 扇区（根分区终点，如 `194672639`）
+
+**② 用 gdisk 重建分区表**
+
+```bash
+sudo gdisk /dev/nvme0n1
+```
+
+进入交互提示符后，按下表顺序操作（每步按回车确认）：
+
+| 输入 | 说明 |
+|------|------|
+| `d` → `2` | 删除 p2（swap） |
+| `d` → `3` | 删除 p3（ext4 根分区） |
+| `n` | 新建分区 |
+| `3` | 分区编号仍用 3 |
+| `<p2-Start>` | 起始扇区填 p2 的 Start（步骤①记录的值） |
+| `<p3-End>` | 结束扇区填 p3 的 End（步骤①记录的值） |
+| `8300` | 分区类型：Linux filesystem |
+| `w` → `Y` | 写入分区表并退出 |
+
+> `gdisk` 只修改分区表，不碰磁盘数据，删除再重建不会丢失 ext4 文件系统内容。
+
+**③ 扩容文件系统**
+
+```bash
+sudo e2fsck -f /dev/nvme0n1p3
+sudo resize2fs /dev/nvme0n1p3
+```
+
+`e2fsck` 先完成一致性检查，`resize2fs` 再将文件系统扩展到填满整个新分区。  
+这一步对应 GParted 平移数据的过程，同样耗时较长，**不可中断**。
+
+> 完成后继续执行第三阶段。
 
 ### 第三阶段：重启验证
 
