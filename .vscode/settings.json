@@ -1,0 +1,13 @@
+{
+    "folder-color.pathColors": [
+        {
+            "folderPath": "tutorial-documentation\\tutorials\\",
+            "isFolderOnly": true,
+            "color": "foldercolorizer.color_00afd7"
+        },
+        {
+            "folderPath": "tutorial-documentation\\tutorials\\linux\\",
+            "color": "foldercolorizer.color_ffd787"
+        }
+    ]
+}
