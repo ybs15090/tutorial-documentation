@@ -1,0 +1,11 @@
+E:\Program Files\Clash Verge
+
+C:\Program Files\Google\Chrome\Application\chrome.exe
+
+
+专用 Chrome 的所有数据都在这个独立目录里:
+
+  📁 E:\APP\clash-VPN\clean-us-profile(当前 472 MB)
+
+  由 clean-us-chrome.bat 里的 --user-data-dir="E:\APP\clash-VPN\clean-us-profile" 指定,和你日常 Chrome
+  完全隔离。
