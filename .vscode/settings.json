@@ -7,7 +7,13 @@
         },
         {
             "folderPath": "tutorial-documentation\\tutorials\\linux\\",
-            "color": "foldercolorizer.color_ffd787"
+            "color": "foldercolorizer.color_ffd787",
+            "badge": "🔶"
+        },
+        {
+            "folderPath": "tutorial-documentation\\tutorials\\win\\",
+            "color": "foldercolorizer.color_00afd7",
+            "badge": "🔷"
         }
     ]
 }
