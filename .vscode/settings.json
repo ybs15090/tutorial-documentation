@@ -1,19 +1,33 @@
 {
     "folder-color.pathColors": [
         {
-            "folderPath": "tutorial-documentation\\tutorials\\",
+            "folderPath": "Tutorial-documentation/tutorials/",
             "isFolderOnly": true,
             "color": "foldercolorizer.color_00afd7"
         },
         {
-            "folderPath": "tutorial-documentation\\tutorials\\linux\\",
+            "folderPath": "Tutorial-documentation/tutorials/linux/",
             "color": "foldercolorizer.color_ffd787",
             "badge": "🔶"
         },
         {
-            "folderPath": "tutorial-documentation\\tutorials\\win\\",
+            "folderPath": "Tutorial-documentation/tutorials/win/",
             "color": "foldercolorizer.color_00afd7",
             "badge": "🔷"
-        }
-    ]
+        },
+
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#464F0E",
+        "titleBar.activeBackground": "#626F13",
+        "titleBar.activeForeground": "#F9FBEA",
+        "titleBar.inactiveBackground": "#464F0E",
+        "titleBar.inactiveForeground": "#F9FBEA",
+        "statusBar.background": "#464F0E",
+        "statusBar.foreground": "#F9FBEA",
+        "statusBar.debuggingBackground": "#464F0E",
+        "statusBar.debuggingForeground": "#F9FBEA",
+        "statusBar.noFolderBackground": "#464F0E",
+        "statusBar.noFolderForeground": "#F9FBEA"
+    }
 }
