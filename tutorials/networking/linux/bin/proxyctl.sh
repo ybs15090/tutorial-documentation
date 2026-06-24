@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -u
+# set -u  # 会导致 Tab 补全异常
 
 PROXY_CLASH="http://127.0.0.1:7897"
 PROXY_ISP="http://14abb747972c8:eee9682ce7@37.218.215.154:12323"
